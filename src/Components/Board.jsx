@@ -6,13 +6,18 @@ export default class Board extends React.Component {
     super(props);
     this.state = {
       board: Array(9).fill(null),
+      xIsNext: true,
     };
   }
 
+  nextPlayer() {
+    return this.state.xIsNext ? "X" : "O";
+  }
+
   handleClick(i) {
-    const board = this.state.board;
-    board[i] = "X";
-    this.setState({ board });
+    const board = this.state.board.slice();
+    board[i] = this.nextPlayer();
+    this.setState({ board, xIsNext: !this.state.xIsNext });
   }
 
   renderSquare(i) {
@@ -30,7 +35,7 @@ export default class Board extends React.Component {
   }
 
   render() {
-    const status = "Next player: X";
+    const status = `Next player: ${this.nextPlayer()}`;
 
     return (
       <div>
