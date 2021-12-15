@@ -21,7 +21,6 @@ export default class Board extends React.Component {
       <Square
         value={this.state.board[i]}
         onClick={() => {
-          //   console.log(this);
           // Square 컴포넌트 내부의 button이 클릭되면 prop으로 넘겨받은 onClick 함수(handleClick)가 실행된다.
           // 이때, handleClick 내부의 this를 콘솔에 찍어보면 Board 클래스에 바인딩되어있는 것을 확인할 수 있다.
           this.handleClick(i);
